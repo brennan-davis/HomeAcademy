@@ -5,15 +5,15 @@ services:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: hsh_user
-      POSTGRES_PASSWORD: hsh_password
-      POSTGRES_DB: hsh_db
+      POSTGRES_USER: homeacademy_user
+      POSTGRES_PASSWORD: homeacademy_password
+      POSTGRES_DB: homeacademy_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - '5432:5432'
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U hsh_user -d hsh_db']
+      test: ['CMD-SHELL', 'pg_isready -U homeacademy_user -d homeacademy_db']
       interval: 5s
       timeout: 5s
       retries: 5
@@ -28,7 +28,7 @@ services:
         condition: service_healthy
     env_file: apps/backend/.env
     environment:
-      DATABASE_URL: postgresql://hsh_user:hsh_password@postgres:5432/hsh_db
+      DATABASE_URL: postgresql://homeacademy_user:homeacademy_password@postgres:5432/homeacademy_db
       NODE_ENV: production
     ports:
       - '3001:3001'

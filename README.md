@@ -1,4 +1,4 @@
-# 🏫 HomeSchool Hub
+# 🏫 HomeAcademy
 
 Self-hostable homeschool management platform for families and co-ops.
 

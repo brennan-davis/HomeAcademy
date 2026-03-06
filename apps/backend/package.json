@@ -1,5 +1,5 @@
 {
-  "name": "@hsh/backend",
+  "name": "@homeacademy/backend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
     "db:reset": "prisma migrate reset --force"
   },
   "dependencies": {
-    "@hsh/shared": "*",
+    "@homeacademy/shared": "*",
     "@prisma/client": "^5.10.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",

@@ -1,5 +1,5 @@
 {
-  "name": "@hsh/frontend",
+  "name": "@homeacademy/frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hsh/shared": "*",
+    "@homeacademy/shared": "*",
     "@tanstack/react-query": "^5.24.1",
     "axios": "^1.6.7",
     "date-fns": "^3.3.1",
