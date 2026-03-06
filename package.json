@@ -10,6 +10,9 @@
   "scripts": {
     "dev": "concurrently -n backend,frontend -c blue,green \"npm run dev --workspace=apps/backend\" \"npm run dev --workspace=apps/frontend\"",
     "build": "npm run build --workspace=packages/shared && npm run build --workspace=apps/backend && npm run build --workspace=apps/frontend",
+    "test": "npm run test --workspace=apps/backend",
+    "test:watch": "npm run test:watch --workspace=apps/backend",
+    "test:coverage": "npm run test:coverage --workspace=apps/backend",
     "db:migrate": "npm run db:migrate --workspace=apps/backend",
     "db:studio": "npm run db:studio --workspace=apps/backend",
     "db:seed": "npm run db:seed --workspace=apps/backend"

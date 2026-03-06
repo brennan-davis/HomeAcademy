@@ -14,13 +14,11 @@ app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }))
 app.use(express.json())
 
 // ── Routes ────────────────────────────────────────────────────
-// TODO: Import and mount your routes here as you build them
-// Example:
-//   import authRoutes from './routes/auth'
-//   app.use('/api/auth', authRoutes)
-//
-// Build order recommendation:
-//   1. /api/auth          — register, login, me
+import authRoutes from './routes/auth'
+
+app.use('/api/auth', authRoutes)
+
+// TODO: Mount additional routes as you build them:
 //   2. /api/families      — create family, get my family
 //   3. /api/students      — CRUD students within a family
 //   4. /api/attendance    — log attendance, get records, totals
@@ -42,8 +40,11 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
   res.status(500).json({ error: 'Internal server error' })
 })
 
-app.listen(PORT, () => {
-  logger.info(`🏫 HomeSchool Hub backend running on port ${PORT}`)
-})
+// Only start server if not in test mode
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    logger.info(`🏫 HomeAcademy backend running on port ${PORT}`)
+  })
+}
 
 export default app

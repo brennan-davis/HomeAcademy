@@ -6,3 +6,5 @@ dist/
 *.log
 prisma/migrations/dev*
 .idea/
+/CLAUDE.md
+coverage/
