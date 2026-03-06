@@ -23,7 +23,7 @@ export const requireAuth = (req: Request, res: Response, next: NextFunction) => 
     return res.status(401).json({ error: 'No token provided' })
   }
 
-  const token = authHeader.substring(7) // Remove 'Bearer ' prefix
+  const token = authHeader.substring(7)
 
   const secret = process.env.JWT_SECRET
   if (!secret) {

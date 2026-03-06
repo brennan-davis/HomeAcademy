@@ -7,7 +7,6 @@ import { requireAuth } from '../middleware/auth'
 
 const router = Router()
 
-// Validation Schemas
 const registerSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8, 'Password must be at least 8 characters'),
@@ -19,7 +18,6 @@ const loginSchema = z.object({
   password: z.string(),
 })
 
-// Helper: Generate JWT
 function generateToken(payload: { id: string; email: string; role: string }) {
   const secret = process.env.JWT_SECRET
   if (!secret) {
@@ -28,7 +26,6 @@ function generateToken(payload: { id: string; email: string; role: string }) {
   return jwt.sign(payload, secret, { expiresIn: '7d' })
 }
 
-// Register
 router.post('/register', async (req: Request, res: Response) => {
   const result = registerSchema.safeParse(req.body)
   if (!result.success) {
@@ -72,7 +69,6 @@ router.post('/register', async (req: Request, res: Response) => {
   })
 })
 
-// Login
 router.post('/login', async (req: Request, res: Response) => {
   const result = loginSchema.safeParse(req.body)
   if (!result.success) {
@@ -116,7 +112,6 @@ router.post('/login', async (req: Request, res: Response) => {
   })
 })
 
-// Get current user
 router.get('/me', requireAuth, async (req: Request, res: Response) => {
   const user = await prisma.user.findUnique({
     where: { id: req.user!.id },
