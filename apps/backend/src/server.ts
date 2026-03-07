@@ -2,7 +2,9 @@ import 'express-async-errors'
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import swaggerUi from 'swagger-ui-express'
 import { logger } from './utils/logger'
+import { swaggerSpec } from './config/swagger'
 
 dotenv.config()
 
@@ -11,6 +13,12 @@ const PORT = process.env.PORT || 3001
 
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }))
 app.use(express.json())
+
+// Swagger API documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: 'HomeAcademy API Docs',
+}))
 
 import authRoutes from './routes/auth'
 
